@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Community Events Board</title>
+    </head>
+    <body>
+      <h1>Community Events Board</h1>
+      <div class="event-list">
+        <ul>
+          {% for item in events %}
+            <li>{{item.event_name}} - {{item.event_date}} - {{item.event_category}} - {{item.event_time}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <form method = "post" action = "/results">
+      <!-- need event_name and event_date using two text input (bonus- use date) -->
+        <p>Tell me your event name!</p>
+        <input type = "text" name = "event_name"/>
+        <br>
+        <p>Tell me your event date!</p>
+        <input type = "date" name = "event_date"/>
+        <br>
+
+        <p>Tell me the category of your event</p>
+        <input type = "radio" name = "category" value = "school">school
+        <br>
+        <input type = "radio" name = "category" value = "service">service
+        <br>
+        <input type = "radio" name = "category" value = "travel">travel
+        <br>
+        <p>Tell me the time of your event</p>
+        <input type = "time" name = "event_time"/>
+        <br>
+        <br>
+        <input type = "submit" value = "submit"/>
+      </form>
+    <form method = "post" action = "/filter">
+        <p>Do you want to filter your events?</p>
+        <input type = "radio" name = "category" value = "school">school
+        <br>
+        <input type = "radio" name = "category" value = "service">service
+        <br>
+        <input type = "radio" name = "category" value = "travel">travel
+        <br>
+        <br>
+        <input type = "submit" value = "Submit"/>
+      </form>
+      <button><a href="/delete_all">Delete Events</a></button>
+    </body>
+</html>
